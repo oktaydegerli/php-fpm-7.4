@@ -16,7 +16,6 @@ RUN apt-get install -y --no-install-recommends cron
 RUN apt-get install -y --no-install-recommends libcurl4-openssl-dev
 RUN apt-get install -y --no-install-recommends libpq-dev
 RUN apt-get install -y --no-install-recommends libjpeg-dev
-RUN apt-get install -y --no-install-recommends libpng-dev
 RUN apt-get install -y --no-install-recommends libfreetype6-dev
 RUN apt-get install -y --no-install-recommends libssl-dev
 RUN apt-get install -y --no-install-recommends libwebp-dev
