@@ -18,7 +18,7 @@ RUN apt-get install -y --no-install-recommends libpq-dev
 RUN apt-get install -y --no-install-recommends libjpeg-dev
 RUN apt-get install -y --no-install-recommends libwebp-dev
 RUN apt-get install -y --no-install-recommends libonig-dev
-RUN apt-get install -y --no-install-recommends php7.4-mysql
+RUN apt-get install -y --no-install-recommends php-mysql
 
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
