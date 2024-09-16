@@ -9,18 +9,16 @@ RUN pecl channel-update pecl.php.net
 
 # Apt paketlerini yükle
 
-RUN apt-get install -y --no-install-recommends wget
-RUN apt-get install -y --no-install-recommends git
-RUN apt-get install -y --no-install-recommends curl
-RUN apt-get install -y --no-install-recommends cron
-RUN apt-get install -y --no-install-recommends libcurl4-openssl-dev
-RUN apt-get install -y --no-install-recommends libpq-dev
-RUN apt-get install -y --no-install-recommends libjpeg-dev
-RUN apt-get install -y --no-install-recommends libwebp-dev
-RUN apt-get install -y --no-install-recommends libonig-dev
-RUN apt-get install -y --no-install-recommends libmcrypt-dev
-RUN apt-get install -y --no-install-recommends jpegoptim
-RUN apt-get install -y --no-install-recommends ffmpeg
+RUN apt-get install -y --no-install-recommends wget \
+    git \
+    curl \
+    cron \
+    libcurl4-openssl-dev \
+    libpq-dev \
+    libjpeg-dev \
+    libwebp-dev \
+    libonig-dev \
+    libmcrypt-dev
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
 
