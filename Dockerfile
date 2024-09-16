@@ -19,7 +19,6 @@ RUN apt-get install -y --no-install-recommends libjpeg-dev
 RUN apt-get install -y --no-install-recommends libwebp-dev
 RUN apt-get install -y --no-install-recommends libonig-dev
 RUN apt-get install -y --no-install-recommends libmcrypt-dev
-RUN apt-get install -y --no-install-recommends libxslt-dev
 RUN apt-get install -y --no-install-recommends jpegoptim
 RUN apt-get install -y --no-install-recommends ffmpeg
 
