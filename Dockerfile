@@ -25,8 +25,7 @@ RUN apt-get install -y --no-install-recommends \
 	libwebp-dev \
 	libonig-dev \
 	libmcrypt-dev \
-  	libxml2-dev \
-   	libxslt-dev
+  	libxml2-dev
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
 
