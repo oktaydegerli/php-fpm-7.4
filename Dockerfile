@@ -30,11 +30,20 @@ RUN update-ca-certificates
 
 # Extensionları yükle
 
-RUN docker-php-ext-install mysqli curl iconv mbstring json gettext
+RUN docker-php-ext-install mysqli 
+RUN docker-php-ext-install curl 
+RUN docker-php-ext-install iconv 
+RUN docker-php-ext-install mbstring 
+RUN docker-php-ext-install json 
+RUN docker-php-ext-install gettext
 
-RUN docker-php-ext-install simplexml xml xmlrpc
+RUN docker-php-ext-install simplexml 
+RUN docker-php-ext-install xml 
+RUN docker-php-ext-install xmlrpc
 
-RUN docker-php-ext-install soap xsl
+RUN docker-php-ext-install 
+RUN docker-php-ext-install soap 
+RUN docker-php-ext-install xsl
 
 
 # Redis kurulumu
