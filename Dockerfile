@@ -48,13 +48,6 @@ RUN docker-php-ext-install simplexml xml xmlrpc
 RUN docker-php-ext-install soap xsl
 
 
-# Redis kurulumu
-
-RUN printf "\n" | pecl install redis-5.3.7
-
-RUN docker-php-ext-enable redis
-
-
 # Imagemagick kurulumu
 
 RUN apt-get install -y libmagickwand-dev && pecl install imagick && docker-php-ext-enable imagick
