@@ -14,7 +14,6 @@ RUN apt-get install -y --no-install-recommends git
 RUN apt-get install -y --no-install-recommends curl
 RUN apt-get install -y --no-install-recommends cron
 RUN apt-get install -y --no-install-recommends libcurl4-openssl-dev
-RUN apt-get install -y --no-install-recommends libmemcached-dev
 RUN apt-get install -y --no-install-recommends libz-dev
 RUN apt-get install -y --no-install-recommends libpq-dev
 RUN apt-get install -y --no-install-recommends libjpeg-dev
