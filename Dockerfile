@@ -9,23 +9,25 @@ RUN pecl channel-update pecl.php.net
 
 # Apt paketlerini yükle
 
-RUN apt-get install -y --no-install-recommends \
-	wget \
-	git \
-	curl \
- 	cron \
-	libcurl4-openssl-dev \
-	libmemcached-dev \
-	libz-dev \
-	libpq-dev \
-	libjpeg-dev \
-	libpng-dev \
-	libfreetype6-dev \
-	libssl-dev \
-	libwebp-dev \
-	libonig-dev \
-	libmcrypt-dev \
-  	libxml2-dev
+RUN apt-get install -y --no-install-recommends wget
+RUN apt-get install -y --no-install-recommends git
+RUN apt-get install -y --no-install-recommends curl
+RUN apt-get install -y --no-install-recommends cron
+RUN apt-get install -y --no-install-recommends libcurl4-openssl-dev
+RUN apt-get install -y --no-install-recommends libmemcached-dev
+RUN apt-get install -y --no-install-recommends libz-dev
+RUN apt-get install -y --no-install-recommends libpq-dev
+RUN apt-get install -y --no-install-recommends libjpeg-dev
+RUN apt-get install -y --no-install-recommends libpng-dev
+RUN apt-get install -y --no-install-recommends libfreetype6-dev
+RUN apt-get install -y --no-install-recommends libssl-dev
+RUN apt-get install -y --no-install-recommends libwebp-dev
+RUN apt-get install -y --no-install-recommends libonig-dev
+RUN apt-get install -y --no-install-recommends libmcrypt-dev
+RUN apt-get install -y --no-install-recommends libxml2-dev
+RUN apt-get install -y --no-install-recommends libxslt-dev
+RUN apt-get install -y --no-install-recommends jpegoptim
+RUN apt-get install -y --no-install-recommends ffmpeg
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
 
@@ -43,6 +45,13 @@ RUN docker-php-ext-install mysqli curl iconv mbstring json mcrypt gettext
 RUN docker-php-ext-install simplexml xml xmlrpc
 
 RUN docker-php-ext-install soap xsl
+
+
+# Redis kurulumu
+
+RUN printf "\n" | pecl install redis-5.3.7
+
+RUN docker-php-ext-enable redis
 
 
 # Imagemagick kurulumu
