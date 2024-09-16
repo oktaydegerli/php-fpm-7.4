@@ -18,7 +18,6 @@ RUN apt-get install -y --no-install-recommends libpq-dev
 RUN apt-get install -y --no-install-recommends libjpeg-dev
 RUN apt-get install -y --no-install-recommends libwebp-dev
 RUN apt-get install -y --no-install-recommends libonig-dev
-RUN apt-get install -y --no-install-recommends libmcrypt-dev
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
 
@@ -31,7 +30,7 @@ RUN update-ca-certificates
 
 # Extensionları yükle
 
-RUN docker-php-ext-install mysqli curl iconv mbstring json mcrypt gettext
+RUN docker-php-ext-install mysqli curl iconv mbstring json gettext
 
 RUN docker-php-ext-install simplexml xml xmlrpc
 
