@@ -1,24 +1,29 @@
-FROM php:7.4-fpm
-
-RUN set -eux && \
-    sed -i 's/^deb /# deb /g' /etc/apt/sources.list && \
-    echo 'deb http://archive.debian.org/debian/ stretch main contrib non-free' >> /etc/apt/sources.list && \
-    apt-get update -y && apt-get upgrade -y
+FROM php:7.4-fpm-bullseye
 
 RUN pecl channel-update pecl.php.net
 
 # Apt paketlerini yükle
 
-RUN apt-get install -y --no-install-recommends wget
-RUN apt-get install -y --no-install-recommends git
-RUN apt-get install -y --no-install-recommends curl
-RUN apt-get install -y --no-install-recommends cron
-RUN apt-get install -y --no-install-recommends libcurl4-openssl-dev
-RUN apt-get install -y --no-install-recommends libpq-dev
-RUN apt-get install -y --no-install-recommends libjpeg-dev
-RUN apt-get install -y --no-install-recommends libwebp-dev
-RUN apt-get install -y --no-install-recommends libonig-dev
-RUN apt-get install -y --no-install-recommends php-mysql
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    git \
+    curl \
+    cron \
+    libcurl4-gnutls-dev \
+    libmemcached-dev \
+    libz-dev \
+    libbz2-dev \
+    libpq-dev \
+    libjpeg-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libfreetype6-dev \
+    libssl-dev \
+    libwebp-dev \
+    libonig-dev \
+    libmcrypt-dev \
+    libxml2-dev \
+    libxslt-dev
 
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
@@ -32,21 +37,7 @@ RUN update-ca-certificates
 
 # Extensionları yükle
 
-RUN docker-php-ext-install mysqli 
-RUN docker-php-ext-install curl 
-RUN docker-php-ext-install iconv 
-RUN docker-php-ext-install mbstring 
-RUN docker-php-ext-install json 
-RUN docker-php-ext-install gettext
-
-RUN docker-php-ext-install simplexml 
-RUN docker-php-ext-install xml 
-RUN docker-php-ext-install xmlrpc
-
-RUN docker-php-ext-install 
-RUN docker-php-ext-install soap 
-RUN docker-php-ext-install xsl
-
+docker-php-ext-install mysqli curl iconv mbstring json gettext simplexml xml xmlrpc soap xsl
 
 # Redis kurulumu
 
@@ -57,15 +48,14 @@ RUN docker-php-ext-enable redis
 
 # Imagemagick kurulumu
 
-RUN apt-get install -y libmagickwand-dev && pecl install imagick && docker-php-ext-enable imagick
-
+RUN apt-get install -y libmagickwand-dev
+RUN printf "\n" | pecl install imagick
+RUN docker-php-ext-enable imagick
 
 # GD kurulumu
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install -j$(nproc) gd
-
 
 # Composer kurulumu
 
