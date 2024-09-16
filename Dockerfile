@@ -26,9 +26,7 @@ RUN apt-get install -y --no-install-recommends \
 	libonig-dev \
 	libmcrypt-dev \
   	libxml2-dev \
-   	libxslt-dev \
-	jpegoptim \
-	ffmpeg
+   	libxslt-dev
 
 # Yanlış let's encrypt sertifikasını düzelt. Çünkü eski ve süresi dolmuş bir kök sertifika içeriyor (DST Root CA X3)
 
